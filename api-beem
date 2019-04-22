@@ -1,0 +1,110 @@
+<html>
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+<div class="container">
+  <h2>Simple Dynamic Tabs</h2>
+  <p>From API Be-em</p>
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#MostLoved">Most Loved</a></li>
+    <li><a data-toggle="tab" href="#HighestBid">Highest Bid</a></li>
+    <li><a data-toggle="tab" href="#LowestAsk">Lowest Ask</a></li>
+    <li><a data-toggle="tab" href="#StealDeal">Steal Deal</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="MostLoved" class="tab-pane fade in active">
+      <h3>Most Loved</h3>
+      <?php
+	$url='http://api.be-em.id/api/no/explore';
+	$get=file_get_contents($url);
+	$json=json_decode($get);
+
+	foreach ($json->data->MostLoved as $datas) {?>
+		<img src="<?php echo $datas->poster_url; ?>"height="100" width="150m">
+		<?php echo "Model : "; echo$datas->product_model; ?><br>
+		<?php echo "Harga :"; echo $datas->price; ?><br>
+
+		
+		<!--//echo $datas->poster_url;
+
+
+		//echo $json->data->MostLoved[0]->product_brand;
+	//var_dump($json);--->
+	<?php } ?>
+    </div>
+    <div id="HighestBid" class="tab-pane fade">
+    	<h3>Highest Bid</h3>
+      <?php
+	$url='http://api.be-em.id/api/no/explore';
+	$get=file_get_contents($url);
+	$json=json_decode($get);
+	
+	foreach ($json->data->HighestBid as $datas) {?>
+		<img src="<?php echo $datas->poster_url; ?>"height="100" width="150m">
+		<?php echo "Model : "; echo$datas->product_model; ?><br>
+		<?php echo "Harga :"; echo $datas->price; ?><br>
+
+		
+		<!--//echo $datas->poster_url;
+
+
+		//echo $json->data->MostLoved[0]->product_brand;
+	//var_dump($json);--->
+	<?php } ?>
+    </div>
+    <div id="LowestAsk" class="tab-pane fade">
+      <h3>Lowest Ask</h3>
+      <?php
+	$url='http://api.be-em.id/api/no/explore';
+	$get=file_get_contents($url);
+	$json=json_decode($get);
+
+	foreach ($json->data->LowestAsk as $datas) {?>
+		<img src="<?php echo $datas->poster_url; ?>"height="100" width="150m">
+		<?php echo "Model : "; echo$datas->product_model; ?><br>
+		<?php echo "Harga :"; echo $datas->price; ?><br>
+				
+		<!--//echo $datas->poster_url;
+
+
+		//echo $json->data->MostLoved[0]->product_brand;
+	//var_dump($json);--->
+	<?php } ?>
+    </div>
+    <div id="StealDeal" class="tab-pane fade">
+     <h3>Steal Deal</h3>
+     <?php
+	$url='http://api.be-em.id/api/no/explore';
+	$get=file_get_contents($url);
+	$json=json_decode($get);
+		
+	foreach ($json->data->StealDeal as $datas) {?>
+		<img src="<?php echo $datas->poster_url; ?>"height="100" width="150m">
+		<?php echo "Model : "; echo$datas->product_model; ?><br>
+		<?php echo "Harga :"; echo $datas->price; ?><br>
+			
+		<!--//echo $datas->poster_url;
+
+
+		//echo $json->data->MostLoved[0]->product_brand;
+	//var_dump($json);--->
+	<?php } ?>
+    </div>
+  </div>
+</div>
+
+
+
+
+</body>
+</html>
